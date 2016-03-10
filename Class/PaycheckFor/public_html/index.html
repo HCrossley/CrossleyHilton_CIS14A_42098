@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Meow for a FOR loop.</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            //Declare Variables
+            var hrLimit=60;
+            var payRate=10;
+            var ovrtime=40;
+            var payChk;
+            
+            //Output the inputs
+            var str = "<h1>Pay Rate = $"+payRate+" $'s/hr</h>";
+            str+=     "<h1>Overtime starts at "+ovrtime+" hrs</h1>";
+            document.write(str);
+            
+            // Table Heading
+            str =   '<table border = "1" style = "width:auto">';
+            str +=  "<tr><th>Hours</th><th>Pay Check $</th></tr>";
+            //Calculate the paycheck and determine any overtime due
+            for(var hrsWrkd=0;hrsWrkd<=hrLimit;hrsWrkd++){
+                payChk=(hrsWrkd<ovrtime)?
+                    hrsWrkd*payRate:
+                            ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);
+                    
+                    //Output calculation
+                    str+="<tr>";
+                    str+="<td><center>"+hrsWrkd+"</center></td>";
+                    str+="<td><center>"+payChk+"</center></td>";
+                    str+="</tr>";
+                }
+                str+="</table>";
+                document.write(str);
+        </script>
+        <div>Meow we need to do another type of loop.</div>
+    </body>
+</html>
