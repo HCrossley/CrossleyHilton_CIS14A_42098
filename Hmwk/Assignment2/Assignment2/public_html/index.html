@@ -6,7 +6,7 @@ Created 3/9/16
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Hours Worked calculator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -14,79 +14,24 @@ Created 3/9/16
         <script>
             // If version.
             // Decalre Variables
-		var hrsWrkd = 20; // Hours worked in hrs
-		var payRate = 10;// Hour at which double time occurs
-		var ovrtime=40; // Hour at which double time occurs
+		var hrsWrkd = prompt("How many hours did you work?"); // Hours worked in hrs
+		var payRate = 10;// Amount earned per hour.
+		var ovrtime=20; // Hour at which double time occurs
+                var tritime=40
 		var payChk; // Pay checkin $'s
 
 		// Calculate the Paycheck
-		if(hrsWrkd<ovrtime)payChk=hrsWrkd*payRate;
-		if(hrsWrkd>=ovrtime)payChk=ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);
-
-		// Output the inputs and the calculation
-		var str = "<h1>Hours worked = " + hrsWrkd+"</h1>";
-		str += "<h1>Pay Rate = $" +payRate+" $'s\hrs</h1>";
-		str += "<h1>Overtime starts at "+ovrtime+" hrs</h1>";
-		str += "<h1>Pay Check = $"+payChk+"</h1>";
-		document.write(str);
-                
-            // Else IF Version.
-            // Decalre Variables
-		var hrsWrkd = 40; // Hours worked in hrs
-		var payRate = 10;// Hour at which double time occurs
-		var ovrtime=40; // Hour at which double time occurs
-		var payChk; // Pay checkin $'s
-
-		// Calculate the Paycheck
-		if(hrsWrkd<ovrtime) {payChk=hrsWrkd*payRate;}
-		else {payChk=ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);}
-
-		// Output the inputs and the calculation
-		var str = "<h1>Hours worked = " + hrsWrkd+"</h1>";
-		str += "<h1>Pay Rate = $" +payRate+" $'s/hr</h1>";
-		str += "<h1>Overtime starts at "+ovrtime+" hrs</h1>";
-		str += "<h1>Pay Check = $"+payChk+"</h1>";
-		document.write(str);
-            // Switch Version
-            // Decalre Variables
-		var hrsWrkd = 60; // Hours worked in hrs
-		var payRate = 10;// Hour at which double time occurs
-		var ovrtime = 40; // Hour at which double time occurs
-		var payChk; // Pay check in $'s
-
-		// Calculate the Paycheck
-		switch (hrsWrkd<ovrtime) {
-			case true: {
-				payChk=hrsWrkd*payRate;
-				break;
-			}
-			default:{
-				payChk=ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);
-			}
-		}
+		payChk=(hrsWrkd<tritime)?
+		(hrsWrkd<ovrtime)?
+                hrsWrkd*payRate:
+		payChk=ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime):
+                payChk=ovrtime*payRate+tritime*payRate+3*payRate*(hrsWrkd-tritime);
 
 		// Output the inputs and the calculation
 		var str="<h1>Hours worked = "+hrsWrkd+"</h1>";
 		str+= "<h1>Pay Rate = $"+payRate+" $'s/hr</h1>";
 		str+= "<h1>Overtime starts at "+ovrtime+" hrs</h1>";
-		str+= "<h1>Pay Check = $"+payChk+"</h1>";
-		document.write(str);
-            // Ternary Version
-            // Decalre Variables
-		var hrsWrkd = 100; // Hours worked in hrs
-		var payRate = 10;// Hour at which double time occurs
-		var ovrtime = 40; // Hour at which double time occurs
-		var payChk; // Pay check in $'s
-
-		// Calculate the Paycheck
-		payChk=(hrsWrkd<ovrtime)?
-		hrsWrkd*payRate:
-		payChk=ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);
-
-		// Output the inputs and the calculation
-		var str="<h1>Hours worked = "+hrsWrkd+"</h1>";
-		str+= "<h1>Pay Rate = $"+payRate+" $'s/hr</h1>";
-		str+= "<h1>Overtime starts at "+ovrtime+" hrs</h1>";
+                str+= "<h1>Triple Time starts at "+tritime+" hrs</h1>";
 		str+= "<h1>Pay Check = $"+payChk+"</h1>";
 		document.write(str);
         </script>    

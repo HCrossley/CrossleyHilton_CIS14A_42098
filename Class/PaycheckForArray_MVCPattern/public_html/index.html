@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            //Declare Variables
+            var hrLimit=80;
+            var payRate=10;
+            var ovrtime=40;
+            var payChk=[];
+            var hours=[];
+            
+            //Output the inputs
+            var str = "<h1>Pay Rate = $"+payRate+" $'s/hr</h>";
+            str+=     "<h1>Overtime starts at "+ovrtime+" hrs</h1>";
+            document.write(str);
+            
+            //Output the inputs
+            var str=    "<h1>Pay Rate = $"+payRate+" $'s/hr</h1>";
+            str+=       "<h1>Overtime starts at "+ovrtime+" hrs</h1>";
+            document.write(str);
+            
+            // Calculate the Pay Check information first
+            for(var hrsWrkd=0, row=0;hrsWrkd<=hrLimit;hrsWrkd+=0.1,row++){
+                //calculate the paycheck
+                payChk[row]=(hrsWrkd<ovrtime)?
+                    hrsWrkd*payRate:
+                    ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);
+                hours[row]=hrsWrkd;
+            }
+           //Table Heading
+		str='<table border="1" style="width:auto">';
+		str+="<tr><th>Hours</th><th>Pay Check $</th></tr>";
+		//Loop over all the hours that could be worked
+		for(var row=0;row<hours.length;row++){
+          //Add the hours worked and the paycheck to the table string
+          str+="<tr>";
+          str+="<td><center>"+hours[row].toFixed(2)+"</center></td>";
+          str+="<td><center>"+payChk[row].toFixed(2)+"</center></td>";
+                 str+="</tr>";
+		}
+		str+="</table>";
+		//Display the string
+		document.write(str);
+        </script>
+        <div>TODO write content</div>
+    </body>
+</html>
