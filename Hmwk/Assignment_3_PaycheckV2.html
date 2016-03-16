@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            //Declare Variables
+            var hrLimit=80;
+            var pRate1=10;
+            var pRate2=11;
+            var ovrtime=40;
+            var payChk1=[];
+            var payChk2=[];
+            var hours=[];
+
+            //Output the inputs
+            var str =           "<h1>The First Pay Grade is $"+pRate1+" $'s/hr</h>";
+            str+=		"<h1>The second Pay Grade is $"+pRate2+" $'s/hr</h>";
+            str+=		"<h1>Overtime starts at "+ovrtime+" hrs</h1>";
+            document.write(str);
+
+            // Calculate the Pay Check information first
+            for(var hrsWrkd=0, row=0;hrsWrkd<=hrLimit;hrsWrkd++,row++){
+                //calculate the paychecks
+                payChk1[row]=(hrsWrkd<ovrtime)?
+                            hrsWrkd*pRate1:
+                            ovrtime*pRate1+2*pRate1*(hrsWrkd-ovrtime);
+                payChk2[row]=(hrsWrkd<ovrtime)?
+                            hrsWrkd*pRate2:
+                            ovrtime*pRate2+2*pRate2*(hrsWrkd-ovrtime);
+                hours[row]=hrsWrkd;
+            }
+            //Table Heading
+            str='<table border="1" style="width:auto">';
+            str+="<tr><th>Hours</th><th>Pay Grade 1</th><th>Pay Grade 2</th></tr>";
+            //Loop over all the hours that could be worked
+            for(var row=0;row<hours.length;row++){
+            //Add the hours worked and the paycheck to the table string
+                str+="<tr>";
+                str+="<td><center>"+hours[row].toFixed(2)+"</center></td>";
+                str+="<td><center>"+payChk1[row].toFixed(2)+"</center></td>";
+                str+="<td><center>"+payChk2[row].toFixed(2)+"</center></td>";
+                str+="</tr>";
+            }
+            str+="</table>";
+            //Display the string
+            document.write(str);
+        </script>
+    </body>
+</html>
