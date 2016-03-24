@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Lab March 23rd Final Product</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="CSE HTML Validator (https://www.htmlvalidator.com/)">
+</head>
+
+<body>
+	<script type="text/javascript">
+	//Take the URL in the window
+	var url=window.location.href;
+	//Split the URL and the important information is in the second half
+	var info=url.split("?");
+	//Place the name value pairs into an array
+	var nValPa=info[1].split("&");
+	object=new Object();
+	for(var i=0;i<nValPa.length;i++){
+		var map=nValPa[i].toString().split("=");
+		var name=map[0];
+		var value=map[1];
+		(name=="Rate")?object[name]=value*.01:
+			object[name]=value;
+	}
+	//Output the elements in the object
+	var str="";
+	for(var name in object){
+		str+=("<h2>"+name+" = "+object[name]+"</h2>");
+	}
+	document.write(str);
+	//Create a heading for our table
+	document.write('<table border="1" width:"auto"'>);
+	document.write("<tr><th>Year</th></tr><tr><th>Amount</th></tr>");
+		for (var year=0;year<nValPa.legth;year++){
+			document.write("<tr>");
+		document.write("<td>"+year+"</td>");
+		document.write("<td>$"++"</td>");
+		document.write("</tr>");
+		}
+		document.write("</table>");
+	</script>
+
+</body>
+</html>
