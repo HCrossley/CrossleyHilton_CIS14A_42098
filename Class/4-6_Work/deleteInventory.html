@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<!--
+		Hilton A. Crossley Jr.
+		April 6th, 2016
+		Attempting to Delete from Local Storage
+-->
+<head>
+<title>Creating a Delete Form</title>
+<script type="text/javascript" src="getForm.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+	//Display Current Inventory
+	//Retrieve the information from local storage.
+	var str=localStorage.getItem("Inventory");
+	//Parse the information back into an array
+	var inv=JSON.parse(str);
+	//Display the array
+	document.write("Current items in Inventory</br></br>");
+	for(var items=0;items<inventory.length;items++){
+		document.write("The "+items+" Object</br></br>");
+		var obj=inventory[items];
+		for (var property in obj){
+			document.write(property+"="+obj[property]+"</br>");
+		}
+	}
+	//Prompt for deletion
+	var userAns = prompt("Which inventory item would you like to remove?");
+	//Find the name of the item to delete
+	var delItem = intentory[userAns];
+	//Delete item from storage
+	localStorage.removeItem(delItem);
+	//Display the information within the storage again. 
+		//Display Current Inventory
+	//Retrieve the information from local storage.
+	var str=localStorage.getItem("Inventory");
+	//Parse the information back into an array
+	var inv=JSON.parse(str);
+	//Display the array
+	document.write("Current items in Inventory</br></br>");
+	for(var items=0;items<inventory.length;items++){
+		document.write("The "+items+" Object</br></br>");
+		var obj=inventory[items];
+		for (var property in obj){
+			document.write(property+"="+obj[property]+"</br>");
+		}
+	}
+</script>
+</body>
+</html>
