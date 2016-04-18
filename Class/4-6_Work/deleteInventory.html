@@ -16,7 +16,7 @@
 	//Retrieve the information from local storage.
 	var str=localStorage.getItem("Inventory");
 	//Parse the information back into an array
-	var inv=JSON.parse(str);
+	var inventory=JSON.parse(str);
 	//Display the array
 	document.write("Current items in Inventory</br></br>");
 	for(var items=0;items<inventory.length;items++){
@@ -27,19 +27,11 @@
 		}
 	}
 	//Prompt for deletion
-	var userAns = prompt("Which inventory item would you like to remove?");
-	//Find the name of the item to delete
-	var delItem = intentory[userAns];
-	//Delete item from storage
-	localStorage.removeItem(delItem);
-	//Display the information within the storage again. 
-		//Display Current Inventory
-	//Retrieve the information from local storage.
-	var str=localStorage.getItem("Inventory");
-	//Parse the information back into an array
-	var inv=JSON.parse(str);
-	//Display the array
-	document.write("Current items in Inventory</br></br>");
+	var userAns = prompt("Which inventory item would you like to remove? Enter the number of the item only.");
+	//Delete item from Array
+	inventory.splice(userAns, 1);
+	//Display the information within the altered array again. 
+	document.write("Current Items in Inventory</br></br>");
 	for(var items=0;items<inventory.length;items++){
 		document.write("The "+items+" Object</br></br>");
 		var obj=inventory[items];
@@ -47,6 +39,10 @@
 			document.write(property+"="+obj[property]+"</br>");
 		}
 	}
+	//Stringify the array
+	var n_Str=JSON.stringify(inventory);
+	//Store into local Storage
+	localStorage.setItem("Inventory",n_Str);
 </script>
 </body>
 </html>
